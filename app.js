@@ -8,9 +8,13 @@ async function start() {
   if (!fs.existsSync(path.resolve(tmpPath, 'anonymous_token'))) {
     fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')
   }
-  // 启动时更新anonymous_token
-  const generateConfig = require('./generateConfig')
-  await generateConfig()
+  // 跳过 generateConfig（可能因网络原因失败）
+  try {
+    const generateConfig = require('./generateConfig')
+    await generateConfig()
+  } catch(e) {
+    console.warn('generateConfig failed, continuing...')
+  }
   require('./server').serveNcmApi({
     checkVersion: false,
   })
