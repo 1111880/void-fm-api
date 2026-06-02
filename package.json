@@ -8,7 +8,7 @@
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"**/*.{js,ts}\"",
     "docs:normalize": "node tools/normalize-docs-home.js",
-    "prepare": "husky install",
+    "prepare": "",
     "pkgwin": "pkg . -t node18-win-x64 -C GZip -o bin/app --no-bytecode",
     "pkglinux": "pkg . -t node18-linux-x64 -C GZip -o bin/app --no-bytecode",
     "pkgmacos": "pkg . -t node18-macos-x64 -C GZip -o bin/app --no-bytecode"
@@ -43,7 +43,7 @@
   "main": "main.js",
   "types": "./interface.d.ts",
   "engines": {
-    "node": ">=12"
+    "node": "18.x"
   },
   "lint-staged": {
     "*.js": [
